@@ -1,0 +1,279 @@
+:root {
+    --primary-color: #047857;
+    --primary-hover: #065f46;
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    
+    /* Priority Colors */
+    --priority-high-bg: #fee2e2;
+    --priority-high-text: #ef4444;
+    --priority-medium-bg: #fef3c7;
+    --priority-medium-text: #f59e0b;
+    --priority-low-bg: #dcfce7;
+    --priority-low-text: #22c55e;
+
+    /* Status Colors */
+    --status-not-bg: #f3f4f6;
+    --status-not-text: #6b7280;
+    --status-prog-bg: #e0e7ff;
+    --status-prog-text: #4f46e5;
+    --status-comp-bg: #dcfce7;
+    --status-comp-text: #16a34a;
+
+    --border-radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+header p {
+    color: var(--text-muted);
+}
+
+.form-section, .list-section {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--bg-color);
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.15);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover { background-color: var(--primary-hover); }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-secondary {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+}
+
+.btn-secondary:hover { background-color: #e5e7eb; }
+
+.empty-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 600px) {
+    .task-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.task-card {
+    background: var(--card-bg);
+    border: 1px solid #e5e7eb;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.task-card.completed-card {
+    opacity: 0.65;
+    background-color: #f9fafb;
+    border-color: #f3f4f6;
+}
+
+.task-card.completed-card .task-title {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.d-day {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.d-day.passed {
+    color: var(--priority-high-text);
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.priority-high { background-color: var(--priority-high-bg); color: var(--priority-high-text); }
+.priority-medium { background-color: var(--priority-medium-bg); color: var(--priority-medium-text); }
+.priority-low { background-color: var(--priority-low-bg); color: var(--priority-low-text); }
+
+.task-title {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+.course-name {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.due-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    align-self: flex-start;
+}
+
+.status-not_started { background-color: var(--status-not-bg); color: var(--status-not-text); }
+.status-in_progress { background-color: var(--status-prog-bg); color: var(--status-prog-text); }
+.status-completed { background-color: var(--status-comp-bg); color: var(--status-comp-text); }
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    border-top: 1px dashed #e5e7eb;
+    padding-top: 16px;
+}
+
+.btn-action {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-edit { background-color: #f3f4f6; color: var(--text-main); }
+.btn-edit:hover { background-color: #e5e7eb; }
+
+.btn-delete { background-color: #fee2e2; color: #ef4444; }
+.btn-delete:hover { background-color: #fca5a5; }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대학생 과제 마감 관리</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐱📚 나의 과제 관리</h1>
+            <p>모든 수업의 일정, 과제, 발표를 한눈에!</p>
+        </header>
+
+        <section class="form-section">
+            <h2 id="form-title">과제 등록</h2>
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="courseName">수업명</label>
+                    <input type="text" id="courseName" required placeholder="예: 데이터 구조">
+                </div>
+                <div class="form-group">
+                    <label for="taskName">과제명</label>
+                    <input type="text" id="taskName" required placeholder="예: 중간 프로젝트 보고서">
+                </div>
+                <div class="form-group">
+                    <label for="dueDate">마감일</label>
+                    <input type="date" id="dueDate" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="priority">중요도</label>
+                        <select id="priority" required>
+                            <option value="high">상</option>
+                            <option value="medium" selected>중</option>
+                            <option value="low">하</option>
+                        </select>
+                    </div>
+                    <div class="form-group half">
+                        <label for="status">진행 상태</label>
+                        <select id="status" required>
+                            <option value="not_started" selected>시작 전</option>
+                            <option value="in_progress">진행 중</option>
+                            <option value="completed">완료</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" id="submit-btn" class="btn-primary">과제 저장하기</button>
+                <button type="button" id="cancel-edit-btn" class="btn-secondary" style="display: none;">수정 취소</button>
+            </form>
+        </section>
+
+        <section class="list-section">
+            <h2>내 과제 목록</h2>
+            <div id="empty-message" class="empty-message">
+                <p>등록된 과제가 없습니다. 편안한 하루 되세요! ☕️</p>
+            </div>
+            <div id="task-list" class="task-grid">
+                <!-- Task Cards will be dynamically inserted here -->
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
